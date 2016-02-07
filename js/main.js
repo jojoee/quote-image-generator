@@ -84,7 +84,7 @@ function drawQuote(lines) {
     var text = lines[ i ];
     drawQuoteLine(text, i, nLines);
 
-    console.log('nLines: ' + nLines + ', line: ' + i + ', text:' + text);
+    // console.log('nLines: ' + nLines + ', line: ' + i + ', text:' + text);
   };
 
 }
