@@ -1,0 +1,34 @@
+{
+  "name": "quote-image-generator",
+  "description": "FREE Quote Image Generator",
+  "main": "index.html",
+  "authors": [
+    "Nathachai Thongniran"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "free",
+    "quote",
+    "image",
+    "canvas",
+    "generator"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "FileSaver": "*",
+    "blueimp-canvas-to-blob": "^3.1.0",
+    "bootstrap": "^3.3.6"
+  }
+}

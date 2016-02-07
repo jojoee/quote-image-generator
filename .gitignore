@@ -1,0 +1,17 @@
+# dependency
+node_modules/
+bower_components/
+
+# backup
+bk
+bk*
+README*.md
+!README-*.md
+images-bk
+assets-bk
+
+# test
+test
+
+# graphic
+*.psd

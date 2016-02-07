@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kanit'), local('Kanit-Regular'), url(../fonts/Kanit-Regular.ttf) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+
+body {
+  background: #fff;
+  font-family: 'Kanit', sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+p {
+  line-height: 20px;
+}
+
+.canvas {
+  display: block;
+  background-color: #f7f7f7;
+  margin: auto;
+}
+
+.download {
+  width: 120px;
+  height: 60px;
+  line-height: 60px;
+  background-color: #F7F7F7;
+  text-align: center;
+  margin: 24px auto;
+  cursor: pointer;
+  display: block;
+
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  color: #03b48d;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid #F7F7F7;
+  resize: none;
+  height: 320px;
+  padding: 12px;
+}
+
+/* http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css */
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:placeholder-shown {
+  font-style: italic;
+  opacity: 1;
+}
+
+.download:hover {
+  background-color: #03b48d;
+  color: #fff;
+  text-decoration: none;
+}
+
+.test-font {
+  text-align: center;
+  margin: 24px 0;
+}

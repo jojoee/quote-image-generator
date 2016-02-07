@@ -1,0 +1,36 @@
+{
+  "name": "quote-image-generator",
+  "description": "FREE Quote Image Generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jojoee/quote-image-generator.git"
+  },
+  "keywords": [
+    "free",
+    "quote",
+    "image",
+    "canvas",
+    "generator"
+  ],
+  "author": "Nathachai Thongniran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jojoee/quote-image-generator/issues"
+  },
+  "homepage": "https://github.com/jojoee/quote-image-generator#readme",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp": "^3.9.0",
+    "gulp-notify": "^2.2.0"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "pretest": "bower install && npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js  --single-run",
+
+    "prestart": "bower install && npm install",
+    "start": "gulp default"
+  }
+}

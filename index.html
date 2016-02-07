@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quote Image Generator</title>
+<link rel="stylesheet" href="css/reset.css">
+</head>
+<body>
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="test-font">
+        <p>
+          quote-image-generator<br>
+          ยูวีคอร์รัปชั่นแม็กกาซีนมหภาค
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <canvas id="canvas" class="canvas" width="560" height="560"></canvas>
+      </div>
+      <div class="col-md-6">
+        <textarea name="quote-text" id="quote-text" cols="30" rows="10" placeholder="Type Here"></textarea>
+        <div class="download" id="download" onClick="downloadCanvas()">Download</div>        
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(d) {
+  var wf = d.createElement('script'), s = d.scripts[0];
+  wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+  s.parentNode.insertBefore(wf, s);
+})(document);
+</script>
+<!-- dev -->
+<!--
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"></script>
+<script src="bower_components/FileSaver/FileSaver.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+-->
+
+<!-- prod -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.1.0/js/canvas-to-blob.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
+</body>
+</html>
