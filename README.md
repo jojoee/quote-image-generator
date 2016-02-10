@@ -18,6 +18,8 @@ FREE Quote Image Generator
 - [ ] Add background colors / images (keep last 5 colors / images on localStorage)
 - [ ] Add font size
 - [ ] Add font color
+- [ ] Login via `facebook` for publishing (also keep login session / detail)
+- [ ] Automatically publish into your `facebook` status / your `facebook` page (with message)
 - [ ] Add multi font weight
 - [ ] Add page name input
 - [ ] Add page avatar input
