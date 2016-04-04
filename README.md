@@ -14,7 +14,7 @@ FREE Quote Image Generator
 3. Install dependencies `bower install && npm install`
 4. Start `gulp`
 
-## Todo
+## TODO
 - [ ] Add background colors / images (keep last 5 colors / images on localStorage)
 - [ ] Add font size
 - [ ] Add font color
