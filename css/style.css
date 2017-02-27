@@ -47,7 +47,6 @@ textarea {
   width: 100%;
   border: 1px solid #F7F7F7;
   resize: none;
-  height: 320px;
   padding: 12px;
 }
 
@@ -70,4 +69,11 @@ textarea {
 .test-font {
   text-align: center;
   margin: 24px 0;
+}
+
+#images img {
+  display:inline-block;
+  height:100px;
+  width:100px;
+  cursor: pointer;
 }

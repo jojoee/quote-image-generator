@@ -25,12 +25,23 @@ var $QUOTE = $('#quote-text');
 
 var QUOTE_PADDING = 24;
 
+var IMAGE_SRC = 'images';
+
+// var background = 'rgb(247,247,247)';
+var background = new Image();
+background.src = "images/1.jpg";
+
+var font = "Kanit";
+var font_size = "48px";
+
 /*================================================================ APP
 */
 
 function clearBg() {
-  ctx.fillStyle = 'rgb(247, 247, 247)';
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  // ctx.fillStyle = background;
+  // ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  ctx.drawImage(background,0,0);
+
 }
 
 function drawQuoteLine(text, currentLine, nLines) {
@@ -38,7 +49,7 @@ function drawQuoteLine(text, currentLine, nLines) {
   var yPos = HEIGHT / 2;
 
   ctx.fillStyle = 'rgb(27, 27, 27)';
-  ctx.font = '48px Kanit';
+  ctx.font = font_size +' '+font;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.lineWidth = 4;
@@ -102,7 +113,6 @@ function drawPageName() {
   ctx.fillText(text, xPos, yPos);
 }
 
-var IMAGE_SRC = 'images';
 
 function drawPageAvatar() {
   var imageObj = new Image();
@@ -120,10 +130,10 @@ function downloadCanvas() {
   var min = 100000;
   var max = 999999;
   var rand = getRandomInt(min, max);
-  var fileName = 'quote-' + rand + '.jpg';
+  var fileName = 'quote-' + rand + '.png';
 
   canvas.toBlob(function(blob) {
-    saveAs(blob, fileName);
+    window.saveAs(blob, fileName);
   });
 }
 
@@ -153,11 +163,23 @@ window.onload = function() {
       },
 
       google: {
-        families: ['Kanit']
+        families: [font]
       }
     };
   }
 };
+
+$("#images img").click(function(){
+  background = new Image();
+  background.src = IMAGE_SRC + "/" + $(this).parent().index() + ".jpg";
+  redrawCanvas();
+})
+
+$("#fonts a").click(function() {
+  font = $(this).text();
+  alert(font);
+  redrawCanvas();
+})
 
 /*
 http://stackoverflow.com/questions/2299604/javascript-convert-textarea-into-an-array
