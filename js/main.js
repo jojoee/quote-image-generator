@@ -33,6 +33,7 @@ background.src = "images/1.jpg";
 
 var font = "Kanit";
 var font_size = "48px";
+var font_color = "#222222"
 
 /*================================================================ APP
 */
@@ -40,22 +41,21 @@ var font_size = "48px";
 function clearBg() {
   // ctx.fillStyle = background;
   // ctx.fillRect(0, 0, WIDTH, HEIGHT);
-  ctx.drawImage(background,0,0);
-
+  ctx.drawImage(background,0,0,560, 560);
 }
 
 function drawQuoteLine(text, currentLine, nLines) {
   var xPos = WIDTH / 2;
   var yPos = HEIGHT / 2;
 
-  ctx.fillStyle = 'rgb(27, 27, 27)';
+  ctx.fillStyle = font_color;
   ctx.font = font_size +' '+font;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.lineWidth = 4;
 
   var middleHeight = HEIGHT / 2;
-  var padding
+  var padding;
 
   // hacky
   if (nLines === 1) {
@@ -145,12 +145,28 @@ function init() {
   drawPageAvatar();
 }
 
-function redrawCanvas(text) {
+function redrawCanvas() {
   clearBg();
-  drawQuote(text);
+  drawQuote(lines);
   drawPageName();
   drawPageAvatar();
 }
+
+function redrawCanvasSolidBg() {
+  ctx.fillStyle = background;
+  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  drawQuote(lines);
+  drawPageName();
+  drawPageAvatar();
+}
+
+$("#url_form").submit(function(e) {
+  e.preventDefault();
+  if($("#image_url").val() != '') 
+    background.src = $("#image_url").val();
+  redrawCanvas();
+  e.preventDefault();
+})
 
 window.onload = function() {
   if (IS_DEBUG) {
@@ -171,7 +187,7 @@ window.onload = function() {
 
 $("#images img").click(function(){
   background = new Image();
-  background.src = IMAGE_SRC + "/" + $(this).parent().index() + ".jpg";
+  background.src = IMAGE_SRC + "/" + (1+$(this).parent().index()) + ".jpg";
   redrawCanvas();
 })
 
@@ -179,6 +195,21 @@ $("#fonts a").click(function() {
   font = $(this).text();
   alert(font);
   redrawCanvas();
+})
+
+$("#color_blocks div").click(function(){
+  background = $(this).css("background-color");
+  ctx.fillStyle = background;
+  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  drawQuote(lines);
+  drawPageName();
+  drawPageAvatar();
+})
+
+$("#font-colors div").click(function(){
+  font_color = $(this).css("background-color");
+  drawQuote(lines);
+  drawPageName();
 })
 
 /*
@@ -189,7 +220,6 @@ http://stackoverflow.com/questions/5026961/html5-canvas-ctx-filltext-wont-do-lin
 */
 $QUOTE.bind('input propertychange', function() {
   var text = this.value;
-  var lines = text.split(/\n/);
-
+  lines = text.split(/\n/);
   redrawCanvas(lines);
 });

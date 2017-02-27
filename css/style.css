@@ -50,6 +50,11 @@ textarea {
   padding: 12px;
 }
 
+input {
+  width: 100%;
+  margin:8px 0px;
+}
+
 /* http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css */
 ::-webkit-input-placeholder,
 :-moz-placeholder,
@@ -76,4 +81,40 @@ textarea {
   height:100px;
   width:100px;
   cursor: pointer;
+}
+
+#color_blocks {
+  margin: 8px;
+}
+
+#color_blocks div{
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer;
+  margin: -2px;
+}
+
+#font-colors {
+  margin: 8px;
+}
+#font-colors div {
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer;
+  margin: -2px;
+}
+
+#fonts a{
+  text-decoration: none !important;
+  padding: 4px;
+  color: black;
+  cursor: pointer;
+}
+
+#fonts a:hover {
+  color: #03b48d;
 }
