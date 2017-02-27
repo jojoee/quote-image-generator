@@ -7,6 +7,8 @@ FREE Quote Image Generator
 - Inspiration by [freelance.splendith.com](http://freelance.splendith.com/)
 - Default width & height: 520px
 - Support 5 maximum lines
+- Image or solid background selection 
+- Font style and color selection
 
 ## Getting Started
 1. Set path (e.g. `cd C:\xampp\htdocs\jojoee.com\quote-image-generator`)
@@ -15,9 +17,9 @@ FREE Quote Image Generator
 4. Start `gulp`
 
 ## TODO
-- [ ] Add background colors / images (keep last 5 colors / images on localStorage)
+- [x] Add background colors / images (keep last 5 colors / images both on localStorage and web url)
 - [ ] Add font size
-- [ ] Add font color
+- [x] Add font color
 - [ ] Login via `facebook` for publishing (also keep login session / detail)
 - [ ] Automatically publish into your `facebook` status / your `facebook` page (with message)
 - [ ] Add multi font weight
