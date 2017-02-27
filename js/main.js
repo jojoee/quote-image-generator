@@ -26,22 +26,29 @@ var $QUOTE = $('#quote-text');
 var QUOTE_PADDING = 24;
 
 var IMAGE_SRC = 'images';
+var IMG = "img";
+var SOLID = "solid";
 
 // var background = 'rgb(247,247,247)';
+var bgtype = IMG;
 var background = new Image();
 background.src = "images/1.jpg";
 
 var font = "Kanit";
 var font_size = "48px";
-var font_color = "#222222"
+var font_color = "#222222";
+var lines = "";
 
 /*================================================================ APP
 */
 
 function clearBg() {
-  // ctx.fillStyle = background;
-  // ctx.fillRect(0, 0, WIDTH, HEIGHT);
-  ctx.drawImage(background,0,0,560, 560);
+  if(bgtype == SOLID){
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  }
+  else 
+    ctx.drawImage(background,0,0,560, 560);
 }
 
 function drawQuoteLine(text, currentLine, nLines) {
@@ -152,18 +159,11 @@ function redrawCanvas() {
   drawPageAvatar();
 }
 
-function redrawCanvasSolidBg() {
-  ctx.fillStyle = background;
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
-  drawQuote(lines);
-  drawPageName();
-  drawPageAvatar();
-}
-
 $("#url_form").submit(function(e) {
   e.preventDefault();
   if($("#image_url").val() != '') 
     background.src = $("#image_url").val();
+  bgtype = IMG;
   redrawCanvas();
   e.preventDefault();
 })
@@ -188,28 +188,25 @@ window.onload = function() {
 $("#images img").click(function(){
   background = new Image();
   background.src = IMAGE_SRC + "/" + (1+$(this).parent().index()) + ".jpg";
-  redrawCanvas();
+  bgtype = IMG;
+  redrawCanvas(lines);
 })
 
 $("#fonts a").click(function() {
   font = $(this).text();
   alert(font);
-  redrawCanvas();
+  redrawCanvas(lines);
 })
 
 $("#color_blocks div").click(function(){
   background = $(this).css("background-color");
-  ctx.fillStyle = background;
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
-  drawQuote(lines);
-  drawPageName();
-  drawPageAvatar();
+  bgtype = SOLID;
+  redrawCanvas(lines)
 })
 
 $("#font-colors div").click(function(){
   font_color = $(this).css("background-color");
-  drawQuote(lines);
-  drawPageName();
+  redrawCanvas(lines)
 })
 
 /*
