@@ -35,7 +35,7 @@ var background = new Image();
 background.src = "images/1.jpg";
 
 var font = "Kanit";
-var font_size = "48px";
+var font_size = 48;
 var font_color = "#222222";
 var lines = "";
 
@@ -56,7 +56,7 @@ function drawQuoteLine(text, currentLine, nLines) {
   var yPos = HEIGHT / 2;
 
   ctx.fillStyle = font_color;
-  ctx.font = font_size +' '+font;
+  ctx.font = font_size +'px '+font;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.lineWidth = 4;
@@ -150,6 +150,7 @@ function init() {
   $QUOTE.text(DEFAULT_QUOTE); // set default text
   drawPageName();
   drawPageAvatar();
+  $("#font-size").text(font_size);
 }
 
 function redrawCanvas() {
@@ -157,6 +158,13 @@ function redrawCanvas() {
   drawQuote(lines);
   drawPageName();
   drawPageAvatar();
+}
+
+function changeFontSize(mode) {
+  $("#font-size").text(font_size);
+  if(mode == 1) font_size += 4;
+  else if(font_size > 8) font_size -= 4;
+  redrawCanvas();
 }
 
 $("#url_form").submit(function(e) {
@@ -194,7 +202,6 @@ $("#images img").click(function(){
 
 $("#fonts a").click(function() {
   font = $(this).text();
-  alert(font);
   redrawCanvas(lines);
 })
 

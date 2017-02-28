@@ -50,11 +50,11 @@
 						<a><img class="img-responsive" src="images/2.jpg" /></a>
 						<a><img class="img-responsive" src="images/3.jpg" /></a>
 					</div>
-          <form id="url_form">
-            <input id="image_url" type="text" placeholder="Drag and drop image here or provide image url">
-          </form>
-          <div id="font-colors">
-            <p>Font Color</p>
+					<form id="url_form">
+						<input id="image_url" type="text" placeholder="Drag and drop image here or provide image url">
+					</form>
+					<div id="font-colors">
+						<p>Font Color</p>
 						<a>
 							<div style="background:#222222;"></div>
 						</a>
@@ -64,9 +64,13 @@
 						<a>
 							<div style="background:gray;"></div>
 						</a>
-          </div>
+					</div>
+					<p  style="display:inline-block;">Font Size</p>
+					<div id="minus" onclick="changeFontSize(-1)">-</div>
+					<p style="display:inline-block;" id="font-size" ></p>
+					<div id="plus" onclick="changeFontSize(1)">+</div>
 					<div id="fonts">
-            <p style="display:inline;">Select Font</p>
+						<p style="display:inline;">Select Font</p>
 						<a>Kanit</a>
 						<a>Ubuntu</a>
 					</div>

@@ -118,3 +118,18 @@ input {
 #fonts a:hover {
   color: #03b48d;
 }
+
+#plus , #minus {
+  display: inline-block;
+  font-size: 20px;
+  height: 25px;
+  width: 25px;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#plus:hover , #minus:hover {
+  background-color: #03b48d;
+  color: #fff;
+}
