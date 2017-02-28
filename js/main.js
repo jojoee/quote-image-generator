@@ -23,55 +23,81 @@ var DEFAULT_PAGE_NAME = 'เสี่ยวเอ้อ';
 var CANVAS_PADDING = 24;
 var $QUOTE = $('#quote-text');
 
-var QUOTE_PADDING = 24;
+var QUOTE_PADDING = font_size/2;
+
+var IMAGE_SRC = 'images';
+var IMG = "img";
+var SOLID = "solid";
+
+// var background = 'rgb(247,247,247)';
+var bgtype = IMG;
+var background = new Image();
+background.src = "images/1.jpg";
+
+var font = "Kanit";
+var font_size = 48;
+var font_color = "#222222";
+var lines = "";
 
 /*================================================================ APP
 */
 
 function clearBg() {
-  ctx.fillStyle = 'rgb(247, 247, 247)';
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  if(bgtype == SOLID){
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  }
+  else 
+    ctx.drawImage(background,0,0,560, 560);
 }
 
 function drawQuoteLine(text, currentLine, nLines) {
   var xPos = WIDTH / 2;
   var yPos = HEIGHT / 2;
+  var mid = Math.round(nLines/2);
 
-  ctx.fillStyle = 'rgb(27, 27, 27)';
-  ctx.font = '48px Kanit';
+  ctx.fillStyle = font_color;
+  ctx.font = font_size +'px '+font;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.lineWidth = 4;
 
   var middleHeight = HEIGHT / 2;
-  var padding
+  var padding;
+
+  //need to handle cases for even lines
+  for(var i = nLines; i>= 0; i--) {
+    // if(nLines%2 == 0 && currentLine == mid) yPos = middleHeight;
+    if(currentLine == i) yPos = middleHeight + QUOTE_PADDING * 2 * (i - mid + 1);
+  }
+
 
   // hacky
-  if (nLines === 1) {
-    yPos = middleHeight;
+  // if (nLines === 1) {
+  //   yPos = middleHeight;
 
-  } else if (nLines === 2) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING; }
-    else if (currentLine === 1) { yPos = middleHeight + QUOTE_PADDING; }
+  // } else if (nLines === 2) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING; }
+  //   else if (currentLine === 1) { yPos = middleHeight + QUOTE_PADDING; }
 
-  } else if (nLines === 3) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 2; }
-    else if (currentLine === 1) { yPos = middleHeight; }
-    else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING * 2; }
+  // } else if (nLines === 3) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 2; }
+  //   else if (currentLine === 1) { yPos = middleHeight; }
+  //   else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING * 2; }
 
-  } else if (nLines === 4) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 3; }
-    else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING; }
-    else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING; }
-    else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 3; }
+  // } else if (nLines === 4) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 3; }
+  //   else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING; }
+  //   else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING; }
+  //   else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 3; }
 
-  } else if (nLines === 5) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 4; }
-    else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING * 2; }
-    else if (currentLine === 2) { yPos = middleHeight}
-    else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 2; }
-    else if (currentLine === 4) { yPos = middleHeight + QUOTE_PADDING * 4; }
-  }
+  // } else if (nLines === 5) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 4; }
+  //   else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING * 2; }
+  //   else if (currentLine === 2) { yPos = middleHeight}
+  //   else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 2; }
+  //   else if (currentLine === 4) { yPos = middleHeight + QUOTE_PADDING * 4; }
+  // }
 
   ctx.fillText(text, xPos, yPos);
 }
@@ -102,7 +128,6 @@ function drawPageName() {
   ctx.fillText(text, xPos, yPos);
 }
 
-var IMAGE_SRC = 'images';
 
 function drawPageAvatar() {
   var imageObj = new Image();
@@ -120,10 +145,10 @@ function downloadCanvas() {
   var min = 100000;
   var max = 999999;
   var rand = getRandomInt(min, max);
-  var fileName = 'quote-' + rand + '.jpg';
+  var fileName = 'quote-' + rand + '.png';
 
   canvas.toBlob(function(blob) {
-    saveAs(blob, fileName);
+    window.saveAs(blob, fileName);
   });
 }
 
@@ -133,14 +158,32 @@ function init() {
   $QUOTE.text(DEFAULT_QUOTE); // set default text
   drawPageName();
   drawPageAvatar();
+  $("#font-size").text(font_size);
 }
 
-function redrawCanvas(text) {
+function redrawCanvas() {
   clearBg();
-  drawQuote(text);
+  drawQuote(lines);
   drawPageName();
   drawPageAvatar();
 }
+
+function changeFontSize(mode) {
+  $("#font-size").text(font_size);
+  if(mode == 1) font_size += 4;
+  else if(font_size > 8) font_size -= 4;
+  QUOTE_PADDING = font_size/2;
+  redrawCanvas();
+}
+
+$("#url_form").submit(function(e) {
+  e.preventDefault();
+  if($("#image_url").val() != '') 
+    background.src = $("#image_url").val();
+  bgtype = IMG;
+  redrawCanvas();
+  e.preventDefault();
+})
 
 window.onload = function() {
   if (IS_DEBUG) {
@@ -153,11 +196,34 @@ window.onload = function() {
       },
 
       google: {
-        families: ['Kanit']
+        families: [font]
       }
     };
   }
 };
+
+$("#images img").click(function(){
+  background = new Image();
+  background.src = IMAGE_SRC + "/" + (1+$(this).parent().index()) + ".jpg";
+  bgtype = IMG;
+  redrawCanvas(lines);
+})
+
+$("#fonts a").click(function() {
+  font = $(this).text();
+  redrawCanvas(lines);
+})
+
+$("#color_blocks div").click(function(){
+  background = $(this).css("background-color");
+  bgtype = SOLID;
+  redrawCanvas(lines)
+})
+
+$("#font-colors div").click(function(){
+  font_color = $(this).css("background-color");
+  redrawCanvas(lines)
+})
 
 /*
 http://stackoverflow.com/questions/2299604/javascript-convert-textarea-into-an-array
@@ -167,7 +233,6 @@ http://stackoverflow.com/questions/5026961/html5-canvas-ctx-filltext-wont-do-lin
 */
 $QUOTE.bind('input propertychange', function() {
   var text = this.value;
-  var lines = text.split(/\n/);
-
+  lines = text.split(/\n/);
   redrawCanvas(lines);
 });
