@@ -23,7 +23,7 @@ var DEFAULT_PAGE_NAME = 'เสี่ยวเอ้อ';
 var CANVAS_PADDING = 24;
 var $QUOTE = $('#quote-text');
 
-var QUOTE_PADDING = 24;
+var QUOTE_PADDING = font_size/2;
 
 var IMAGE_SRC = 'images';
 var IMG = "img";
@@ -172,6 +172,7 @@ function changeFontSize(mode) {
   $("#font-size").text(font_size);
   if(mode == 1) font_size += 4;
   else if(font_size > 8) font_size -= 4;
+  QUOTE_PADDING = font_size/2;
   redrawCanvas();
 }
 
