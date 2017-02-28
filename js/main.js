@@ -54,6 +54,7 @@ function clearBg() {
 function drawQuoteLine(text, currentLine, nLines) {
   var xPos = WIDTH / 2;
   var yPos = HEIGHT / 2;
+  var mid = Math.round(nLines/2);
 
   ctx.fillStyle = font_color;
   ctx.font = font_size +'px '+font;
@@ -64,32 +65,39 @@ function drawQuoteLine(text, currentLine, nLines) {
   var middleHeight = HEIGHT / 2;
   var padding;
 
-  // hacky
-  if (nLines === 1) {
-    yPos = middleHeight;
-
-  } else if (nLines === 2) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING; }
-    else if (currentLine === 1) { yPos = middleHeight + QUOTE_PADDING; }
-
-  } else if (nLines === 3) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 2; }
-    else if (currentLine === 1) { yPos = middleHeight; }
-    else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING * 2; }
-
-  } else if (nLines === 4) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 3; }
-    else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING; }
-    else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING; }
-    else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 3; }
-
-  } else if (nLines === 5) {
-    if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 4; }
-    else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING * 2; }
-    else if (currentLine === 2) { yPos = middleHeight}
-    else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 2; }
-    else if (currentLine === 4) { yPos = middleHeight + QUOTE_PADDING * 4; }
+  //need to handle cases for even lines
+  for(var i = nLines; i>= 0; i--) {
+    // if(nLines%2 == 0 && currentLine == mid) yPos = middleHeight;
+    if(currentLine == i) yPos = middleHeight + QUOTE_PADDING * 2 * (i - mid + 1);
   }
+
+
+  // hacky
+  // if (nLines === 1) {
+  //   yPos = middleHeight;
+
+  // } else if (nLines === 2) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING; }
+  //   else if (currentLine === 1) { yPos = middleHeight + QUOTE_PADDING; }
+
+  // } else if (nLines === 3) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 2; }
+  //   else if (currentLine === 1) { yPos = middleHeight; }
+  //   else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING * 2; }
+
+  // } else if (nLines === 4) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 3; }
+  //   else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING; }
+  //   else if (currentLine === 2) { yPos = middleHeight + QUOTE_PADDING; }
+  //   else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 3; }
+
+  // } else if (nLines === 5) {
+  //   if      (currentLine === 0) { yPos = middleHeight - QUOTE_PADDING * 4; }
+  //   else if (currentLine === 1) { yPos = middleHeight - QUOTE_PADDING * 2; }
+  //   else if (currentLine === 2) { yPos = middleHeight}
+  //   else if (currentLine === 3) { yPos = middleHeight + QUOTE_PADDING * 2; }
+  //   else if (currentLine === 4) { yPos = middleHeight + QUOTE_PADDING * 4; }
+  // }
 
   ctx.fillText(text, xPos, yPos);
 }
