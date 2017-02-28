@@ -18,7 +18,7 @@ FREE Quote Image Generator
 
 ## TODO
 - [x] Add background colors / images (keep last 5 colors / images both on localStorage and web url)
-- [ ] Add font size
+- [x] Add font size
 - [x] Add font color
 - [ ] Login via `facebook` for publishing (also keep login session / detail)
 - [ ] Automatically publish into your `facebook` status / your `facebook` page (with message)
@@ -26,10 +26,11 @@ FREE Quote Image Generator
 - [ ] Add page name input
 - [ ] Add page avatar input
 - [ ] Remove unused files / configs
-- [ ] Support multi-lines
+- [x] Support multi-lines
 - [ ] Detect `empty` line
 - [ ] Detect input width (prevent text-overflow on the canvas)
-- [ ] Update algorithm
+- [x] Update algorithm
+- [ ] Correct algorithm for even number of lines
 - [ ] Add english font
 - [ ] Port to `Angular`
 - [ ] Clear canvas on `text area` only (instead clear all canvas area)
