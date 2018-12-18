@@ -1,7 +1,7 @@
 # quote-image-generator
 FREE Quote Image Generator
 
-[![Screenshot](https://raw.githubusercontent.com/jojoee/quote-image-generator/gh-pages/screenshot.jpg "Screenshot")](http://jojoee.github.io/quote-image-generator/)
+[![Screenshot](https://raw.githubusercontent.com/jojoee/quote-image-generator/gh-pages/screenshot.jpg "Screenshot")](http://jojoee.github.io/quote-image-generator/) [![Greenkeeper badge](https://badges.greenkeeper.io/jojoee/quote-image-generator.svg)](https://greenkeeper.io/)
 
 ## Note
 - Inspiration by [freelance.splendith.com](http://freelance.splendith.com/)
